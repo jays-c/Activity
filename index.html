@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Calculator</title>
+
+  
+
+
+<style>
+body {
+    font-family: Arial;
+    background: #f5f5f5;
+    color: #000;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.dark {
+    background: #121212;
+    color: #fff;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#toggleBtn {
+    background: green;
+    color: white;
+}
+
+#modeBtn {
+    background: #333;
+    color: white;
+}
+
+.container {
+    background: #ccc;
+    width: 400px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.dark .container {
+    background: #1e1e1e;
+}
+
+input {
+    padding: 10px;
+    margin: 10px;
+    width: 150px;
+}
+
+.buttons button {
+    background: #3498db;
+    color: white;
+    margin: 5px;
+}
+
+h3 {
+    margin-top: 20px;
+}
+</style>
+
+
+
+    
+</head>
+
+<body>
+    <div class="top-bar">
+    <button id="toggleBtn" onclick="toggleAlert()">Alert: ON</button>
+    <button id="modeBtn" onclick="toggleMode()">🌙 Dark Mode</button>
+    </div>
+
+
+
+    <div class="container">
+    <h2>Simple Calculator</h2>
+
+    <input type="number" id="num1" placeholder="Enter first number">
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <div class="buttons">
+        <button onclick="calculate('+')">Add (+)</button>
+        <button onclick="calculate('-')">Subtract (-)</button>
+        <button onclick="calculate('*')">Multiply (×)</button>
+        <button onclick="calculate('/')">Divide (÷)</button>
+        <button onclick="clearFields()">Clear (C)</button>
+    </div>
+
+    <h3 id="result">Result: 0</h3>
+
+<script>
+let alertOn = true;
+let darkMode = false;
+
+// ALERT TOGGLE
+function toggleAlert() {
+    alertOn = !alertOn;
+
+    const btn = document.getElementById("toggleBtn");
+
+    if (alertOn) {
+        btn.innerText = "Alert: ON";
+        btn.style.background = "green";
+    } else {
+        btn.innerText = "Alert: OFF";
+        btn.style.background = "red";
+    }
+}
+
+// DARK MODE TOGGLE
+function toggleMode() {
+    darkMode = !darkMode;
+    const body = document.body;
+    const modeBtn = document.getElementById("modeBtn");
+
+    body.classList.toggle("dark");
+
+    if (darkMode) {
+        modeBtn.innerText = "☀️ Light Mode";
+    } else {
+        modeBtn.innerText = "🌙 Dark Mode";
+    }
+}
+
+// CALCULATOR
+function calculate(operator) {
+    let num1 = parseFloat(document.getElementById("num1").value);
+    let num2 = parseFloat(document.getElementById("num2").value);
+    let result = 0;
+
+    if (isNaN(num1) || isNaN(num2)) {
+        alert("Please enter numbers!");
+        return;
+    }
+
+    switch(operator) {
+        case '+': result = num1 + num2; break;
+        case '-': result = num1 - num2; break;
+        case '*': result = num1 * num2; break;
+        case '/': 
+            if (num2 === 0) {
+                alert("Cannot divide by zero!");
+                return;
+            }
+            result = num1 / num2; 
+            break;
+    }
+
+    document.getElementById("result").innerText = "Result: " + result;
+
+    if (alertOn) {
+        alert("Result: " + result);
+    }
+}
+
+// CLEAR
+function clearFields() {
+    document.getElementById("num1").value = "";
+    document.getElementById("num2").value = "";
+    document.getElementById("result").innerText = "Result: 0";
+}
+</script>
+
+</body>
+</html>
