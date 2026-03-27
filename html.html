@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Examples</title>
+</head>
+<body>
+    <div>
+        <button onclick="alert('Hello')">pindutin mo para maalert ka (Inline JS)</button>
+    </div>
+
+   
+    <div>
+        <button onclick="sabihinHello()">pindutin mo para maalert ka (From Function)</button>
+        <div class="output" id="output2"></div>
+        <p class="note">From function</p>
+    </div>
+
+ 
+    <div>
+        <button onclick="orasPo()">oras</button>
+        <p id="demo3" class="note"></p>
+    </div>
+
+  
+    <div>
+        <button onclick="dagdag()">Add</button>
+
+        <p>Count: <span id="countDisplay">0</span></p>
+    </div>
+
+  
+    <div>
+        <input type="text" id="nameInput" placeholder="Enter your name">
+        <button onclick="greetUser()">Greet me</button>
+        <p id="greeting"></p>
+    </div>
+
+
+    <div>
+        <input type="number" id="ageInput" placeholder="Enter your Age:">
+        <button onclick="legality()">Check Age</button>
+        <div class="output" id="ageResult"></div>
+        
+    </div>
+
+
+
+
+    <div>
+        <input type="number" id="num1" placeholder="Unang numero:">
+         <input type="number" id="num2" placeholder="ikalawang numero:">
+        <button onclick="addNumber()">Ipagsama mo</button>
+        <div class="output" id="sumResult">Result: 0</div>
+        
+        
+    </div>
+
+    <div id="light" style="background-color: gray;padding: 20px; text-align: center;border-radius: 5px;margin-bottom: 10px;">
+        light is off
+
+    </div>
+        <button onclick="toggleLight()">Toggle Light</button>
+
+
+
+    <script>
+        function sabihinHello() {
+            let message = "Hello galing sa Function";
+            alert(message);
+            document.getElementById("output2").innerHTML = message;
+            console.log("Sample 2: Button was clicked");
+        }
+
+        function orasPo() {
+            document.getElementById("demo3").innerHTML = "Text changed! Button pressed at "+new Date().toLocaleTimeString();
+            console.log("Sample 3: Button was clicked");
+        }
+
+        let count = 0;
+        function dagdag() {
+            count++;
+            document.getElementById("countDisplay").innerHTML = count;
+            console.log("Sample 4");
+        }
+
+        function greetUser() {
+            let name = document.getElementById("nameInput").value;
+            
+            if (name === "") {
+                name = "Guest";
+            }
+            let message = "Hello, " + name + "!";
+            
+            document.getElementById("greeting").innerHTML = message;
+            console.log("Sample 5");
+        }
+
+        function legality(){
+
+
+        }
+
+        function addNumber(){
+
+
+
+        }
+
+        let isLightOn=false
+         function toggleLight(){
+            isLightOn=!isLightOn;
+            let light = document.getElementById("light"); // Corrected this line
+            if(isLightOn){
+                light.innerHTML="Light is ON";
+                light.style.backgroundColor="red";
+                light.style.color="black";
+                console.log("Sample 8: Light turned ON")
+            }else{
+                light.innerHTML="Light is OFF";
+                light.style.backgroundColor="gray";
+                light.style.color="white";
+                console.log("Sample 8: Light turned OFF")
+            }
+
+
+
+
+        }
+
+    </script>
+</body>
+</html>
